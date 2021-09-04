@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const errorHandler=require("errorhandler")
+//const errorHandler=require("errorhandler")
 const cors = require('cors');
 const mongodb = require("mongodb");
 const mongoClient = mongodb.MongoClient;
 const url = "mongodb://localhost:27017";
+const PORT=process.env.PORT || 3000;
 
 app.use(cors({
     origin: "*"
@@ -13,7 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 
-app.use(errorHandler({dumpExceptions: true, showStack:true}))
+//app.use(errorHandler({dumpExceptions: true, showStack:true}))
 
 // let tasks = []
 
@@ -115,8 +116,8 @@ app.delete("/delete_task/:id", async function (req, res) {
     }
 })
 
-app.listen(3000, function () {
-    console.log(`The app is listening in port in the number 3000`)
+app.listen(PORT, function () {
+    console.log(`The app is listening in port in the number ${PORT}`)
 })
-
+//console.log(process);
    
